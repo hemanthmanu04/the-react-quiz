@@ -1,7 +1,7 @@
 import express from "express";
 const app = express();
 const port = 9001; // Use the provided PORT or 9000 by default
-
+import cors from "cors";
 const questions = [
   {
     question: "Which is the most popular JavaScript framework?",
@@ -142,6 +142,14 @@ const questions = [
     points: 20,
   },
 ];
+
+app.use(
+  cors({
+    origin: ["https://the-react-quiz-frontend.vercel.app"],
+    methods: ["POST", "GET", "DELETE", "PUT"],
+    credentials: true,
+  })
+);
 
 app.get("/questions", (req, res) => {
   res.json(questions);
