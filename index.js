@@ -143,6 +143,14 @@ const questions = [
   },
 ];
 
+app.use(
+  cors({
+    origin: ["https://the-react-quiz-frontend.vercel.app"],
+    methods: ["POST", "GET", "DELETE", "PUT"],
+    credentials: true,
+  })
+);
+
 app.get("/questions", (req, res) => {
   res.json(questions);
 });
